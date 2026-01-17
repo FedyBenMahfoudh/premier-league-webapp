@@ -1,8 +1,4 @@
-import pandas as pd
-import requests
-import time 
 from abc import ABC, abstractmethod
-
 
 class ScraperInterface(ABC):
     @abstractmethod

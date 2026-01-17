@@ -1,6 +1,6 @@
 from scrapers.providers.FbrefScraper import FbrefScraper
 from scrapers.providers.TransferMarketScraper import TransferMarketScraper
-from DataScraping.src.utils.clean import clean_dataframe
+
 if __name__ == '__main__':
 
     # base_url = "https://fbref.com/en/comps/9/Premier-League-Stats"
@@ -16,4 +16,3 @@ if __name__ == '__main__':
     scraper = TransferMarketScraper(base_url=base_url)
     scraper.scrape()
     scraper.save_to_csv("transfermarket_premier_league_stats.csv")
-    cl

@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 import time
 import requests
 import pandas as pd
-import json
 import os
 
 class TransferMarketScraper(ScraperInterface):
@@ -143,37 +142,4 @@ class TransferMarketScraper(ScraperInterface):
         else:
             print("No data to save.")
     
-    def json_to_csv(self, file_path):
-        """Convert JSON file to CSV file"""
-        try:
-            if not os.path.exists(file_path):
-                print(f"✗ Error: File not found at {file_path}")
-                return None
-            
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            
-            df = pd.DataFrame(data)
-            
-            base_name = os.path.splitext(os.path.basename(file_path))[0]
-            output_dir = os.path.dirname(file_path) or 'output'
-            csv_filename = f"{base_name}.csv"
-            csv_filepath = os.path.join(output_dir, csv_filename)
-            
-            # Save with headers explicitly set to True
-            df.to_csv(csv_filepath, index=False, header=True)
-            print(f"✓ Successfully converted JSON to CSV")
-            print(f"✓ Saved to {csv_filepath}")
-            return csv_filepath
-        except json.JSONDecodeError as e:
-            print(f"✗ Error: Invalid JSON format - {e}")
-            return None
-        except Exception as e:
-            print(f"✗ Error converting JSON to CSV: {e}")
-            return None
-        if self.data:
-            full_data = pd.concat(self.data, ignore_index=True)
-            full_data.to_csv(filename, index=False)
-            print(f"Data saved to {filename}")
-        else:
-            print("No data to save.")
+    
