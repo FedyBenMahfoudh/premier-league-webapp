@@ -1,0 +1,7 @@
+cloudscraper==1.2.71
+requests
+beautifulsoup4
+pandas
+zenrows
+firecrawl
+playwright
